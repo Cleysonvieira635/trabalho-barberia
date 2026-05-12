@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lili Cabeleireiro</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+      min-height: 100vh;
+      color: #333;
+    }
+
+    .topo {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 25px;
+    }
+
+    .topo-esquerda {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 3px solid #e91e63;
+      object-fit: cover;
+    }
+
+    .topo-titulo h1 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #c2185b;
+    }
+
+    .topo-titulo p {
+      font-size: 11px;
+      color: #ad5f8a;
+      letter-spacing: 1px;
+    }
+
+    .btn-notificacao {
+      background: #e91e63;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+    }
+
+    .container {
+      display: flex;
+      height: calc(100vh - 110px);
+    }
+
+    .sidebar {
+      width: 300px;
+      background: white;
+      padding: 20px;
+      overflow-y: auto;
+      box-shadow: 2px 0 10px rgba(0,0,0,0.08);
+    }
+
+    .sidebar h2 {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: #e91e63;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    input,
+    select {
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+    }
+
+    .btn-agendar {
+      background: #e91e63;
+      color: white;
+      border: none;
+      padding: 11px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .divisor {
+      border: none;
+      border-top: 1px solid #eee;
+      margin: 14px 0;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background: #f9f9f9;
+      border: 1px solid #eee;
+      padding: 11px 12px;
+      border-radius: 10px;
+      margin-bottom: 9px;
+    }
+
+    .li-nome {
+      font-weight: 600;
+      font-size: 13px;
+      margin-bottom: 3px;
+    }
+
+    .li-info {
+      font-size: 11px;
+      color: #999;
+      margin-bottom: 7px;
+    }
+
+    .li-servico {
+      display: inline-block;
+      background: #fce4ec;
+      color: #e91e63;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 10px;
+      border-radius: 20px;
+    }
+
+    .li-acoes {
+      display: flex;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .btn-editar {
+      background: #e3f2fd;
+      color: #1976d2;
+      border: 1px solid #bbdefb;
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      cursor: pointer;
+    }
+
+    .btn-remover {
+      background: #fce4ec;
+      color: #e91e63;
+      border: 1px solid #f8bbd0;
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      cursor: pointer;
+    }
+
+    #calendar {
+      flex: 1;
+      background: white;
+      padding: 20px;
+      overflow: auto;
+    }
+
+    .fc-toolbar-title {
+      color: #e91e63 !important;
+    }
+
+    .fc-button {
+      background: #e91e63 !important;
+      border-color: #e91e63 !important;
+    }
+
+    .fc-day-today {
+      background: rgba(233,30,99,0.05) !important;
+    }
+
+    /* ========================= */
+    /* VERSÃO CELULAR */
+    /* ========================= */
+
+    @media (max-width: 768px) {
+
+      body {
+        overflow-x: hidden;
+      }
+
+      .topo {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+        text-align: center;
+      }
+
+      .topo-esquerda {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .logo {
+        width: 70px;
+        height: 70px;
+      }
+
+      .topo-titulo h1 {
+        font-size: 20px;
+      }
+
+      .topo-titulo p {
+        font-size: 10px;
+      }
+
+      .btn-notificacao {
+        width: 100%;
+        font-size: 14px;
+      }
+
+      .container {
+        flex-direction: column;
+        height: auto;
+      }
+
+      .sidebar {
+        width: 100%;
+        height: auto;
+        padding: 15px;
+        box-shadow: none;
+      }
+
+      #calendar {
+        width: 100%;
+        min-height: 650px;
+        padding: 10px;
+      }
+
+      input,
+      select,
+      .btn-agendar {
+        width: 100%;
+        font-size: 14px;
+      }
+
+      .li-acoes {
+        flex-direction: column;
+      }
+
+      .btn-editar,
+      .btn-remover {
+        width: 100%;
+        padding: 8px;
+      }
+
+      .fc-toolbar {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px;
+      }
+
+      .fc-toolbar-title {
+        font-size: 15px !important;
+        text-align: center;
+      }
+
+      .fc-button {
+        font-size: 11px !important;
+        padding: 6px 8px !important;
+      }
+
+      .fc-timegrid-slot-label {
+        font-size: 10px !important;
+      }
+
+      .fc-col-header-cell-cushion {
+        font-size: 11px !important;
+      }
+
+      .fc-event {
+        font-size: 10px !important;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+<header class="topo">
+
+  <div class="topo-esquerda">
+
+    <img src="img/logo.jpg" class="logo" alt="Logo">
+
+    <div class="topo-titulo">
+      <h1>Lili Cabeleireiro</h1>
+      <p>Sistema de Agendamento</p>
+    </div>
+
+  </div>
+
+  <button class="btn-notificacao">
+    🔔 Notificações
+  </button>
+
+</header>
+
+<div class="container">
+
+  <div class="sidebar">
+
+    <h2>💅 Nova Agenda</h2>
+
+    <form id="form">
+
+      <input type="text" id="nome" placeholder="Nome do cliente" required>
+
+      <input type="date" id="data" required>
+
+      <select id="hora" required>
+
+        <option value="">Horário</option>
+
+        <option value="08:00">08:00</option>
+        <option value="08:45">08:45</option>
+
+        <option value="09:00">09:00</option>
+        <option value="09:45">09:45</option>
+
+        <option value="10:00">10:00</option>
+        <option value="10:45">10:45</option>
+
+        <option value="11:00">11:00</option>
+        <option value="11:45">11:45</option>
+
+        <option value="12:00">12:00</option>
+        <option value="12:45">12:45</option>
+
+        <option value="13:00">13:00</option>
+        <option value="13:45">13:45</option>
+
+        <option value="14:00">14:00</option>
+        <option value="14:45">14:45</option>
+
+        <option value="15:00">15:00</option>
+        <option value="15:45">15:45</option>
+
+        <option value="16:00">16:00</option>
+        <option value="16:45">16:45</option>
+
+        <option value="17:00">17:00</option>
+        <option value="17:45">17:45</option>
+
+        <option value="18:00">18:00</option>
+        <option value="18:45">18:45</option>
+
+        <option value="19:00">19:00</option>
+
+      </select>
+
+      <select id="servico" required>
+
+        <option value="">Serviço</option>
+
+        <option value="Corte">✂️ Corte</option>
+        <option value="Escova">💨 Escova</option>
+        <option value="Coloração">🎨 Coloração</option>
+        <option value="Hidratação">✨ Hidratação</option>
+        <option value="Progressiva">🔥 Progressiva</option>
+        <option value="Mechas">🌟 Mechas</option>
+
+      </select>
+
+      <button type="submit" class="btn-agendar">
+        📅 Agendar
+      </button>
+
+    </form>
+
+    <hr class="divisor">
+
+    <ul id="lista"></ul>
+
+  </div>
+
+  <div id="calendar"></div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+
+<script>
+
+  let calendar;
+
+  document.addEventListener('DOMContentLoaded', function () {
+
+    calendar = new FullCalendar.Calendar(document.getElementById('calendar'), {
+
+      initialView: 'timeGridWeek',
+
+      locale: 'pt-br',
+
+      // FUNCIONA DAS 08 ÀS 19
+      slotMinTime: '08:00:00',
+      slotMaxTime: '19:00:00',
+
+      // TERÇA A SÁBADO
+      hiddenDays: [0,1],
+
+      editable: true,
+
+      headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'timeGridWeek,timeGridDay'
+      }
+
+    });
+
+    calendar.render();
+
+  });
+
+</script>
+
+</body>
+</html>

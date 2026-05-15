@@ -42,6 +42,25 @@ body {
 }
 .btn-notificacao:hover { background: #c2185b; transform: translateY(-1px); }
 
+.ia-btn {
+  background: #fff;
+  color: #b5446e;
+  border: 2px solid #b5446e;
+  border-radius: 20px;
+  padding: 8px 18px;
+  font-size: 0.82rem;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: background 0.2s, color 0.2s;
+}
+.ia-btn:hover {
+  background: #b5446e;
+  color: #fff;
+}
+
+
+
 .container { display: flex; height: calc(100vh - 110px); }
 
 .sidebar {
@@ -182,3 +201,4 @@ li:hover { border-color: #e91e63; box-shadow: 0 2px 8px rgba(233,30,99,0.1); }
   transition: background 0.2s;
 }
 .btn-fechar:hover { background: #eee; }
+

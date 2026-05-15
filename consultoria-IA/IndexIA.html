@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lili Cabeleireiro – Consultoria Capilar por IA</title>
+  <link rel="stylesheet" href="styleIA.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="brand">
+      <div class="logo-circle">
+        <img src="logo.jpg" alt="Logo" />
+      </div>
+      <div class="brand-text">
+        <h1>Lili Cabeleireiro</h1>
+        <p>Sistema de Agendamento</p>
+      </div>
+    </div>
+    <a href="../index.html" style="text-decoration: none;">
+      <button class="notif-btn">↩ Voltar para página principal</button>
+    </a>
+  </header>
+
+  <!-- MAIN -->
+  <main>
+    <div class="card">
+      <div class="card-header">
+        <div class="sparkle">✦</div>
+        <h2>Consultoria Capilar <em>por IA</em></h2>
+        <div class="sparkle">✦</div>
+      </div>
+
+      <div class="card-body">
+        <div class="field-group">
+          <label for="cabelo">Descreva seu tipo de cabelo:</label>
+          <textarea id="cabelo" placeholder="Ex: Cabelo cacheado, oleoso na raiz, ressecado nas pontas, com danos químicos..."></textarea>
+        </div>
+
+        <div class="field-group">
+          <label for="orcamento">Quanto você pode gastar por mês com cuidados capilares (R$):</label>
+          <div class="input-wrapper">
+            <span class="prefix">R$</span>
+            <input type="number" id="orcamento" placeholder="0,00" min="0" />
+          </div>
+        </div>
+
+        <button id="btn-consultar" onclick="consultarIA()">
+          <span id="btn-text">✨ Consultar IA</span>
+          <span id="btn-loading" class="hidden">⏳ Analisando...</span>
+        </button>
+
+        <div class="field-group" id="resultado-wrapper" style="display:none">
+          <label>Recomendação da IA:</label>
+          <div id="resultado" class="resultado-box"></div>
+        </div>
+
+        <div id="erro-msg" class="erro hidden"></div>
+      </div>
+    </div>
+
+    <p class="footer-note">Powered by Gemini AI · Salão Lili Cabeleireiro © 2025</p>
+  </main>
+
+  <script src="scriptIA.js"></script>
+</body>
+</html>

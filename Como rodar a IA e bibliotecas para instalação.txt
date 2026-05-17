@@ -1,0 +1,27 @@
+1. bibliotecas
+
+Primeiro é preciso instalar as seguintes bibliotecas:
+
+Flask → framework web em Python.
+
+flask_cors (CORS) → extensão para habilitar Cross-Origin Resource Sharing.
+
+google.generativeai → SDK da Google para usar modelos de IA generativa.
+
+os → biblioteca padrão do Python para interagir com o sistema operacional.
+
+dotenv (load_dotenv) → carrega variáveis de ambiente de um arquivo .env
+
+Pode usar o seguinte comando:
+pip install flask flask-cors google-generativeai python-dotenv
+
+
+2. geração de chave API
+
+Após instalação das bibliotecas é necessário gerar uma chave de API do gemini no seguinte link:
+https://aistudio.google.com/app/api-keys?_gl=1*hi4nvo*_ga*MTE0OTA3ODM1LjE3NzkwMzQ5MDI.*_ga_P1DBVKWT6V*czE3NzkwMzQ5MDIkbzEkZzAkdDE3NzkwMzQ5MDIkajYwJGwwJGg5NTEyNjQwMjA.&project=gen-lang-client-0811675374
+
+Apos gerar uma chave de API é necessário colocar na variável "GEMINI_API_KEY"
+dentro no arquivo .env
+
+Com todos os passos feitos, basta deixar o arquivo app.py rodando e depois executar o index.html
